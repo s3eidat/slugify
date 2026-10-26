@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Slugify — Free URL Slug Generator, Arabic Supported | S3eidat Tools</title>
+<meta name="description" content="Turn any title into a clean URL slug: choose the separator, max length, drop stop words, transliterate accents and Arabic to Latin, or keep an Arabic slug. Bulk mode, one per line. Free and private.">
+<meta property="og:title" content="Slugify — clean URL slugs from any title">
+<meta property="og:description" content="URL slugs from titles in any language, including Arabic. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="slugify">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Slugify</h1>
+    <p>Type a title, get a clean URL slug. Paste many titles, one per line, to convert them all at once. Works with accents and Arabic.</p>
+  </section>
+
+  <div class="sl-grid">
+    <section class="card stack">
+      <h2>Options</h2>
+      <div class="stack">
+        <span class="faint">Separator</span>
+        <div class="seg" id="sep" role="group" aria-label="Separator">
+          <button aria-pressed="true" data-v="-">dash -</button>
+          <button aria-pressed="false" data-v="_">underscore _</button>
+          <button aria-pressed="false" data-v=".">dot .</button>
+        </div>
+      </div>
+      <div class="stack">
+        <span class="faint">Arabic text</span>
+        <div class="seg" id="arabic" role="group" aria-label="Arabic text">
+          <button aria-pressed="true" data-v="latin">Transliterate → Latin</button>
+          <button aria-pressed="false" data-v="keep">Keep Arabic</button>
+        </div>
+      </div>
+      <label class="field">Max length <span class="faint">(0 = no limit, cuts at a word)</span>
+        <input type="number" class="input" id="max" min="0" max="500" value="0" inputmode="numeric">
+      </label>
+      <label class="check"><input type="checkbox" id="lower" checked> Lowercase</label>
+      <label class="check"><input type="checkbox" id="accents" checked> Transliterate accents (é → e, ß → ss)</label>
+      <label class="check"><input type="checkbox" id="stop"> Remove stop words (the, of, and, <bdi>في</bdi>, <bdi>من</bdi>…)</label>
+    </section>
+
+    <div class="stack-cards">
+      <section class="card">
+        <div class="row between">
+          <h2>Titles <small>one per line</small></h2>
+          <div class="row">
+            <button class="btn ghost small" id="sample">Sample</button>
+            <button class="btn ghost small" id="clear"><svg class="i"><use href="#i-trash"/></svg>Clear</button>
+          </div>
+        </div>
+        <label for="input" class="faint">Text to turn into slugs</label>
+        <textarea class="textarea prose sl-in mt" id="input" dir="auto" spellcheck="false" placeholder="e.g. 10 Tips for Writing Better Headlines"></textarea>
+      </section>
+
+      <section class="card">
+        <div class="row between">
+          <h2>Slugs</h2>
+          <div class="row">
+            <button class="btn small" id="save"><svg class="i"><use href="#i-download"/></svg>.txt</button>
+            <button class="btn small primary" id="copy"><svg class="i"><use href="#i-copy"/></svg>Copy all</button>
+          </div>
+        </div>
+        <ul class="sl-list mt" id="list" aria-live="polite"></ul>
+      </section>
+    </div>
+  </div>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
